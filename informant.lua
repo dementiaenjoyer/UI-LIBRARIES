@@ -4628,7 +4628,7 @@ function library:CreateSettingsTab(menu)
             end
         end
         setByPreset = false
-    end}):Select('Default');
+    end}):Select('Gamesense');
 
     return settingsTab;
 end
