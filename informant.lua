@@ -71,7 +71,7 @@ local library = {
     opening = false;
     hasInit = false;
     cheatname = 'homohack';
-    gamename = startupArgs.gamename;
+    gamename = "pf";
     fileext = startupArgs.fileext or '.txt';
 }
 
