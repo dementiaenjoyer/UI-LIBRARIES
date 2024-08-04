@@ -4,25 +4,28 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/demen
 
 local window = library:Window({name = `<font color=\"#AA55EB\">obelus</font> | {os.date("%b %d %Y", os.time())}`})
 
-local aimbot = window:Page({Name = "aimbot"})
-local antiaim = window:Page({Name = "antiaim"})
-local visuals = window:Page({Name = "visuals"})
-local misc = window:Page({Name = "misc"})
-local config = window:Page({Name = "config"})
-local skins = window:Page({Name = "skins"})
+local tabs = {
+    aimbot = window:Page({Name = "aimbot"}),
+    antiaim = window:Page({Name = "antiaim"}),
+    visuals = window:Page({Name = "visuals"}),
+    misc = window:Page({Name = "misc"}),
+    config = window:Page({Name = "config"}),
+    skins = window:Page({Name = "skins"})
+}
+local sections = {
+    aimbot_section = tabs.aimbot:Section({Name = "players", size = 330}),
+    aimbot_section2 = tabs.aimbot:Section({Name = "colored models", Side = "Right"})
+}
 
-local aimbot_section = aimbot:Section({Name = "players", size = 330})
-local aimbot_section2 = aimbot:Section({Name = "colored models", Side = "Right"})
-
-local label = aimbot_section:Label({
+local label = sections.aimbot_section:Label({
     Name = "label hello random"
 })
 
-local label2 = aimbot_section:Label({
+local label2 = sections.aimbot_section:Label({
     Name = "with none", Offset = 16
 })
 
-local toggle = aimbot_section:Toggle({
+local toggle = sections.aimbot_section:Toggle({
     Name = "random toggle", 
     Default = true, 
     Callback = function(val) 
@@ -30,7 +33,7 @@ local toggle = aimbot_section:Toggle({
     end
 })
 
-local slider = aimbot_section:Slider({
+local slider = sections.aimbot_section:Slider({
     Default = 10, 
     Minimum = -10, 
     Maximum = 30, 
@@ -41,21 +44,21 @@ local slider = aimbot_section:Slider({
     end
 })
 
-local button = aimbot_section:Button({
+local button = sections.aimbot_section:Button({
     Name = "random button", 
     Callback = function() 
         warn("clicked") 
     end
 })
 
-local slider = aimbot_section:Slider({
+local slider = sections.aimbot_section:Slider({
     Name = "random slider", 
     Callback = function(val) 
         warn(val) 
     end
 })
 
-local slider = aimbot_section:Slider({
+local slider = sections.aimbot_section:Slider({
     Name = "random slider", 
     Default = 10, 
     Minimum = -10, 
@@ -67,16 +70,16 @@ local slider = aimbot_section:Slider({
     end
 })
 
-local label = aimbot_section:Label({
+local label = sections.aimbot_section:Label({
     Name = "label hello random"
 })
 
-local label2 = aimbot_section:Label({
+local label2 = sections.aimbot_section:Label({
     Name = "with none", 
     Offset = 16
 })
 
-local toggle = aimbot_section:Toggle({
+local toggle = sections.aimbot_section:Toggle({
     Name = "random toggle", 
     Default = true, 
     Callback = function(val) 
@@ -84,7 +87,7 @@ local toggle = aimbot_section:Toggle({
     end
 })
 
-local slider = aimbot_section:Slider({
+local slider = sections.aimbot_section:Slider({
     Default = 10, 
     Minimum = -10, 
     Maximum = 30, 
@@ -95,21 +98,21 @@ local slider = aimbot_section:Slider({
     end
 })
 
-local button = aimbot_section:Button({
+local button = sections.aimbot_section:Button({
     Name = "random button", 
     Callback = function() 
         warn("clicked") 
     end
 })
 
-local slider = aimbot_section:Slider({
+local slider = sections.aimbot_section:Slider({
     Name = "random slider", 
     Callback = function(val) 
         warn(val) 
     end
 })
 
-local slider = aimbot_section:Slider({
+local slider = sections.aimbot_section:Slider({
     Name = "random slider", 
     Default = 10, 
     Minimum = -10, 
@@ -120,4 +123,4 @@ local slider = aimbot_section:Slider({
     end
 })
 --
-aimbot:Turn(true)
+sections.aimbot_section:Turn(true)
