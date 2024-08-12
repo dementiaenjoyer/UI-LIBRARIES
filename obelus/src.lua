@@ -141,7 +141,7 @@ do
 		}})
 		--
 		local accentSecond = utility:Create({Type = "Frame", Properties = {
-			BackgroundColor3 = Color3.fromRGB(101, 51, 141),
+			BackgroundColor3 = getgenv().main_color,
 			BorderSizePixel = 0,
 			Parent = accent,
 			Position = UDim2.new(0, 0, 0, 1),
