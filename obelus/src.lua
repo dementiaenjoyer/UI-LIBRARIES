@@ -69,6 +69,8 @@ do
 			ResetOnSpawn = false
 		}})
 
+        getgenv().main_color = info.color or Color3.fromRGB(255, 255, 255)
+
         game:GetService("UserInputService").InputBegan:Connect(function(k,g)
             if not g then 
                 if k.KeyCode == Enum.KeyCode.RightShift then 
