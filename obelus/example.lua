@@ -2,7 +2,7 @@
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/dementiaenjoyer/UI-LIBRARIES/main/obelus/src.lua"))()
 
-local window = library:Window({name = `<font color=\"#AA55EB\">obelus</font> | {os.date("%b %d %Y", os.time())}`})
+local window = library:Window({name = `<font color=\"#AA55EB\">obelus</font> | {os.date("%b %d %Y", os.time())}`, color = Color3.fromRGB(255, 255, 255)})
 
 local tabs = {
     aimbot = window:Page({Name = "aimbot"}),
