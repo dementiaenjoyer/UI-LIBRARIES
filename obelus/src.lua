@@ -133,7 +133,7 @@ do
 		}})
 		--
 		local accentFirst = utility:Create({Type = "Frame", Properties = {
-			BackgroundColor3 = Color3.fromRGB(170, 85, 235),
+			BackgroundColor3 = getgenv().main_color,
 			BorderSizePixel = 0,
 			Parent = accent,
 			Position = UDim2.new(0, 0, 0, 0),
@@ -318,7 +318,7 @@ do
 			end})
 			-- // Nested Functions
 			function page:Turn(state)
-				tabTitle.TextColor3 = state and Color3.fromRGB(170, 85, 235) or Color3.fromRGB(142, 142, 142)
+				tabTitle.TextColor3 = state and getgenv().main_color or Color3.fromRGB(142, 142, 142)
 				tabGradient.Color = state and ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1, Color3.fromRGB(155, 155, 155))}) or ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1, Color3.fromRGB(100, 100, 100))})
 				--
 				page.PageHolder.Visible = state
@@ -536,7 +536,7 @@ do
 					}})
 					--
 					local toggleInlineGradient = utility:Create({Type = "Frame", Properties = {
-						BackgroundColor3 = toggle.state and Color3.fromRGB(170, 85, 235) or Color3.fromRGB(63, 63, 63),
+						BackgroundColor3 = toggle.state and getgenv().main_color or Color3.fromRGB(63, 63, 63),
 						BorderSizePixel = 0,
 						Parent = toggleFrame,
 						Position = UDim2.new(0, 1, 0, 1),
@@ -551,7 +551,7 @@ do
 					-- // Functions / Connections
 					local connection = utility:Connection({Type = toggleButton.MouseButton1Down, Callback = function()
 						toggle.state = not toggle.state
-						toggleInlineGradient.BackgroundColor3 = toggle.state and Color3.fromRGB(170, 85, 235) or Color3.fromRGB(63, 63, 63)
+						toggleInlineGradient.BackgroundColor3 = toggle.state and getgenv().main_color or Color3.fromRGB(63, 63, 63)
 						toggle.callback(toggle.state)
 					end})
 					-- // Nested Functions
@@ -734,7 +734,7 @@ do
 					}})
 					--
 					local sliderSlide = utility:Create({Type = "Frame", Properties = {
-						BackgroundColor3 = Color3.fromRGB(170, 85, 235),
+						BackgroundColor3 = getgenv().main_color,
 						BorderSizePixel = 0,
 						Parent = sliderSlideHolder,
 						Position = UDim2.new(0, 0, 0, 0),
