@@ -4,7 +4,7 @@ local Passed, Statement = pcall(function()
 	local library = {
 		Renders = {},
 		Connections = {},
-		Folder = "PuppyWare", -- Change if wanted
+		Folder = "Script", -- Change if wanted
 		Assets = "Assets", -- Change if wanted
 		Configs = "Configs" -- Change if wanted
 	}
@@ -2366,6 +2366,6 @@ local Passed, Statement = pcall(function()
 			--
 			return Content
 		end
-    end
+	end
+    return library
 end)
-return library
