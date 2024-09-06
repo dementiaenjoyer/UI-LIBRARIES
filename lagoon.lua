@@ -1483,120 +1483,112 @@ function Library:new(options)
 			end
 			
 			function Section:AddSlider(options)
-				options = Library:validate({
-					name = 'Slider',
-					min = 0,
-					max = 100,
-					default = 50,
-					icon = '%',
-					callback = function(v) print(v) end
-				}, options or {})
-				
-				local Slider = {
-				 	element = 'slider',
-					MouseDown = false,
-					Hover = false,
-					Connection = nil,
-					Amount = options.default,
-					ElementId = 0
-				}
-
-				--create
-
-				do
-					-- StarterGui.NewSlider.MainSlider.TabContents.Left._sectionExample.Holder.Children._sliderExample
-					Slider["2d"] = Instance.new("Frame", Section["24"]);
-					Slider["2d"]["BorderSizePixel"] = 0;
-					Slider["2d"]["BackgroundColor3"] = Color3.fromRGB(255, 171, 0);
-					Slider["2d"]["Size"] = UDim2.new(0, 261, 0, 39);
-					Slider["2d"]["Position"] = UDim2.new(0, 0, 0, 50);
-					Slider["2d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-					Slider["2d"]["Name"] = [[_sliderExample]];
-					Slider["2d"]["BackgroundTransparency"] = 1;
-
-					-- StarterGui.NewSlider.MainSlider.TabContents.Left._sectionExample.Holder.Children._sliderExample._sliderName
-					Slider["2e"] = Instance.new("TextLabel", Slider["2d"]);
-					Slider["2e"]["TextWrapped"] = true;
-					Slider["2e"]["TextStrokeTransparency"] = 0;
-					Slider["2e"]["ZIndex"] = 2;
-					Slider["2e"]["BorderSizePixel"] = 0;
-					Slider["2e"]["TextXAlignment"] = Enum.TextXAlignment.Left;
-					Slider["2e"]["TextScaled"] = true;
-					Slider["2e"]["BackgroundColor3"] = Color3.fromRGB(255, 59, 59);
-					Slider["2e"]["TextSize"] = 14;
-					Slider["2e"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-					Slider["2e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-					Slider["2e"]["BackgroundTransparency"] = 1;
-					Slider["2e"]["RichText"] = true;
-					Slider["2e"]["Size"] = UDim2.new(0, 259, 0, 16);
-					Slider["2e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-					Slider["2e"]["Text"] = options["name"];
-					Slider["2e"]["Name"] = [[_sliderName]];
-					Slider["2e"]["Position"] = UDim2.new(0, 0, 0, 2);
-
-					-- StarterGui.NewSlider.MainSlider.TabContents.Left._sectionExample.Holder.Children._sliderExample.Slider
-					Slider["2f"] = Instance.new("Frame", Slider["2d"]);
-					Slider["2f"]["BorderSizePixel"] = 0;
-					Slider["2f"]["BackgroundColor3"] = Color3.fromRGB(26, 26, 26);
-					Slider["2f"]["Size"] = UDim2.new(0, 259, 0, 7);
-					Slider["2f"]["Position"] = UDim2.new(0, 0, 0, 20);
-					Slider["2f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-					Slider["2f"]["Name"] = [[Slider]];
-
-					-- StarterGui.NewSlider.MainSlider.TabContents.Left._sectionExample.Holder.Children._sliderExample.Slider.UICorner
-					Slider["30"] = Instance.new("UICorner", Slider["2f"]);
-					Slider["30"]["CornerRadius"] = UDim.new(0, 1);
-
-					-- StarterGui.NewSlider.MainSlider.TabContents.Left._sectionExample.Holder.Children._sliderExample.Slider.UIStroke
-					Slider["31"] = Instance.new("UIStroke", Slider["2f"]);
-					Slider["31"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
-
-					-- StarterGui.NewSlider.MainSlider.TabContents.Left._sectionExample.Holder.Children._sliderExample.Slider.Bar
-					Slider["32"] = Instance.new("Frame", Slider["2f"]);
-					Slider["32"]["BorderSizePixel"] = 0;
-					Slider["32"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
-					Slider["32"]["Size"] = UDim2.new(0, 129, 0, 7);
-					Slider["32"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-					Slider["32"]["Name"] = [[Bar]];
-
-					-- StarterGui.NewSlider.MainSlider.TabContents.Left._sectionExample.Holder.Children._sliderExample.Slider.Bar.UICorner
-					Slider["33"] = Instance.new("UICorner", Slider["32"]);
-					Slider["33"]["CornerRadius"] = UDim.new(0, 1);
-
-					-- StarterGui.NewSlider.MainSlider.TabContents.Left._sectionExample.Holder.Children._sliderExample.Slider.Bar.UIGradient
-					Slider["34"] = Instance.new("UIGradient", Slider["32"]);
-					Slider["34"]["Rotation"] = 90;
-					Slider["34"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Library.Colors.primary_color),ColorSequenceKeypoint.new(1.000, Library.Colors.secondary_color)};
-
-					-- StarterGui.NewSlider.MainSlider.TabContents.Left._sectionExample.Holder.Children._sliderExample.amount
-					Slider["35"] = Instance.new("TextLabel", Slider["2d"]);
-					Slider["35"]["TextWrapped"] = true;
-					Slider["35"]["TextStrokeTransparency"] = 0;
-					Slider["35"]["ZIndex"] = 2;
-					Slider["35"]["BorderSizePixel"] = 0;
-					Slider["35"]["TextScaled"] = true;
-					Slider["35"]["BackgroundColor3"] = Color3.fromRGB(255, 59, 59);
-					Slider["35"]["TextSize"] = 14;
-					Slider["35"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
-					Slider["35"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
-					Slider["35"]["BackgroundTransparency"] = 1;
-					Slider["35"]["RichText"] = true;
-					Slider["35"]["Size"] = UDim2.new(0, 261, 0, 16);
-					Slider["35"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-					Slider["35"]["Text"] = tostring(options["default"])..options["icon"];
-					Slider["35"]["Name"] = [[amount]];
-					Slider["35"]["Position"] = UDim2.new(0, 0, 0, 20);
-					
-					--config handling
-					
-					local newid = NewWindow.ElementId+1
-					NewWindow.Elements[newid] = {id=newid, state=Slider.Amount}
-					NewWindow.ElementsStored[newid] = Slider
-					Slider.ElementId = newid
-					NewWindow.ElementId+=1
-					print('stored slider in elements, id: '..NewWindow.ElementId)
-					--
-				end
+                options = Library:validate({
+                    name = 'Slider',
+                    min = 0,
+                    max = 100,
+                    default = 50,
+                    icon = '%',
+                    callback = function(v) print(v) end
+                }, options or {})
+                
+                local Slider = {
+                    element = 'slider',
+                    MouseDown = false,
+                    Hover = false,
+                    Connection = nil,
+                    Amount = options.default,
+                    ElementId = 0
+                }
+            
+                local original_callback = options.callback
+                options.callback = function(value)
+                    Slider.Amount = value
+                    original_callback(value)
+                end
+            
+                Slider["2d"] = Instance.new("Frame", Section["24"])
+                Slider["2d"]["BorderSizePixel"] = 0
+                Slider["2d"]["BackgroundColor3"] = Color3.fromRGB(255, 171, 0)
+                Slider["2d"]["Size"] = UDim2.new(0, 261, 0, 39)
+                Slider["2d"]["Position"] = UDim2.new(0, 0, 0, 50)
+                Slider["2d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+                Slider["2d"]["Name"] = [[_sliderExample]]
+                Slider["2d"]["BackgroundTransparency"] = 1
+            
+                Slider["2e"] = Instance.new("TextLabel", Slider["2d"])
+                Slider["2e"]["TextWrapped"] = true
+                Slider["2e"]["TextStrokeTransparency"] = 0
+                Slider["2e"]["ZIndex"] = 2
+                Slider["2e"]["BorderSizePixel"] = 0
+                Slider["2e"]["TextXAlignment"] = Enum.TextXAlignment.Left
+                Slider["2e"]["TextScaled"] = true
+                Slider["2e"]["BackgroundColor3"] = Color3.fromRGB(255, 59, 59)
+                Slider["2e"]["TextSize"] = 14
+                Slider["2e"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+                Slider["2e"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+                Slider["2e"]["BackgroundTransparency"] = 1
+                Slider["2e"]["RichText"] = true
+                Slider["2e"]["Size"] = UDim2.new(0, 259, 0, 16)
+                Slider["2e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+                Slider["2e"]["Text"] = options["name"]
+                Slider["2e"]["Name"] = [[_sliderName]]
+                Slider["2e"]["Position"] = UDim2.new(0, 0, 0, 2)
+            
+                Slider["2f"] = Instance.new("Frame", Slider["2d"])
+                Slider["2f"]["BorderSizePixel"] = 0
+                Slider["2f"]["BackgroundColor3"] = Color3.fromRGB(26, 26, 26)
+                Slider["2f"]["Size"] = UDim2.new(0, 259, 0, 7)
+                Slider["2f"]["Position"] = UDim2.new(0, 0, 0, 20)
+                Slider["2f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+                Slider["2f"]["Name"] = [[Slider]]
+            
+                Slider["30"] = Instance.new("UICorner", Slider["2f"])
+                Slider["30"]["CornerRadius"] = UDim.new(0, 1)
+            
+                Slider["31"] = Instance.new("UIStroke", Slider["2f"])
+                Slider["31"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border
+            
+                Slider["32"] = Instance.new("Frame", Slider["2f"])
+                Slider["32"]["BorderSizePixel"] = 0
+                Slider["32"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+                Slider["32"]["Size"] = UDim2.new(0, 129, 0, 7)
+                Slider["32"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+                Slider["32"]["Name"] = [[Bar]]
+            
+                Slider["33"] = Instance.new("UICorner", Slider["32"])
+                Slider["33"]["CornerRadius"] = UDim.new(0, 1)
+            
+                Slider["34"] = Instance.new("UIGradient", Slider["32"])
+                Slider["34"]["Rotation"] = 90
+                Slider["34"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Library.Colors.primary_color), ColorSequenceKeypoint.new(1.000, Library.Colors.secondary_color)}
+            
+                Slider["35"] = Instance.new("TextLabel", Slider["2d"])
+                Slider["35"]["TextWrapped"] = true
+                Slider["35"]["TextStrokeTransparency"] = 0
+                Slider["35"]["ZIndex"] = 2
+                Slider["35"]["BorderSizePixel"] = 0
+                Slider["35"]["TextScaled"] = true
+                Slider["35"]["BackgroundColor3"] = Color3.fromRGB(255, 59, 59)
+                Slider["35"]["TextSize"] = 14
+                Slider["35"]["FontFace"] = Font.new([[rbxasset://fonts/families/Nunito.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+                Slider["35"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+                Slider["35"]["BackgroundTransparency"] = 1
+                Slider["35"]["RichText"] = true
+                Slider["35"]["Size"] = UDim2.new(0, 261, 0, 16)
+                Slider["35"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+                Slider["35"]["Text"] = tostring(options["default"]) .. options["icon"]
+                Slider["35"]["Name"] = [[amount]]
+                Slider["35"]["Position"] = UDim2.new(0, 0, 0, 20)
+            
+                local newid = NewWindow.ElementId + 1
+                NewWindow.Elements[newid] = {id = newid, state = Slider.Amount}
+                NewWindow.ElementsStored[newid] = Slider
+                Slider.ElementId = newid
+                NewWindow.ElementId += 1
+            
+                return Slider
+            end
 				
 				-- logic
 				
