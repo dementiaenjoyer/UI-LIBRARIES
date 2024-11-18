@@ -1,10 +1,16 @@
-local InputService = game:GetService('UserInputService');
-local TextService = game:GetService('TextService');
-local CoreGui = game:GetService('CoreGui');
-local Teams = game:GetService('Teams');
-local Players = game:GetService('Players');
-local RunService = game:GetService('RunService')
-local TweenService = game:GetService('TweenService');
+local get_service = setmetatable({}, {
+    __index = function(self, index)
+        return cloneref(game.GetService(game, index));
+    end
+})
+
+local InputService = get_service.UserInputService;
+local TextService = get_service.TextService;
+local CoreGui = get_service.CoreGui;
+local Teams = get_service.Teams;
+local Players = get_service.Players;
+local RunService = get_service.RunService
+local TweenService = get_service.TweenService;
 local RenderStepped = RunService.RenderStepped;
 local LocalPlayer = Players.LocalPlayer;
 local Mouse = cloneref(getrawmetatable(LocalPlayer).__index(LocalPlayer, "GetMouse")(LocalPlayer));
