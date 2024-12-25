@@ -1,6 +1,6 @@
 local InputService = game:GetService('UserInputService');
 local TextService = game:GetService('TextService');
-local CoreGui = (gethui and gethui()) or game:GetService('CoreGui');
+local CoreGui = gethui();
 local Teams = game:GetService('Teams');
 local Players = game:GetService('Players');
 local RunService = game:GetService('RunService')
