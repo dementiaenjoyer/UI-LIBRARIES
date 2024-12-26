@@ -1,21 +1,37 @@
-local InputService = game:GetService('UserInputService');
-local TextService = game:GetService('TextService');
-local CoreGui = gethui();
-local Teams = game:GetService('Teams');
-local Players = game:GetService('Players');
-local RunService = game:GetService('RunService')
-local TweenService = game:GetService('TweenService');
+local cloneref = cloneref or function(...) return ...; end;
+local gethui = gethui or function() return cloneref(game:GetService("CoreGui")); end
+
+local GetService = setmetatable({}, {
+    __index = function(self, key)
+        return cloneref(game:GetService(key));
+    end
+});
+
+local HUI = gethui();
+local InputService = GetService.UserInputService;
+local TextService = GetService.TextService;
+local Teams = GetService.Teams;
+local Players = GetService.Players;
+local RunService = GetService.RunService;
+local TweenService = GetService.TweenService;
 local RenderStepped = RunService.RenderStepped;
-local LocalPlayer = Players.LocalPlayer;
-local Mouse = LocalPlayer:GetMouse();
 
-local ProtectGui = protectgui or (syn and syn.protect_gui) or (function() end);
+local Mouse = setmetatable({}, {
+    __index = function(self, key)
+        local mouse_location = InputService:GetMouseLocation();
 
-local ScreenGui = Instance.new('ScreenGui');
-ProtectGui(ScreenGui);
+        if (key == "X") then
+            return mouse_location.X;
+        elseif (key == "Y") then
+            return mouse_location.Y - 58;
+        end
 
+        return mouse_location;
+    end
+});
+
+local ScreenGui = Instance.new('ScreenGui', HUI);
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global;
-ScreenGui.Parent = CoreGui;
 
 local Toggles = {};
 local Options = {};
@@ -3633,4 +3649,3 @@ Players.PlayerAdded:Connect(OnPlayerChange);
 Players.PlayerRemoving:Connect(OnPlayerChange);
 
 getgenv().Library = Library
-return Library
