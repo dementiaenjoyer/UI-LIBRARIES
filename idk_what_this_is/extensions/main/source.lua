@@ -20,9 +20,9 @@ local settings = {
     drag_time = 0.3;
 };
 
-local drawing = loadstring(game:HttpGet("https://ani.yt/deadcell/utilities/code/drawing.lua"))();
-local tween = loadstring(game:HttpGet("https://ani.yt/deadcell/utilities/code/tween.lua"))() -- shhhh
-local signal = loadstring(game:HttpGet('https://ani.yt/Projects/furrydecapitator.rip/assetos/code/signal.lua'))()
+local drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/dementiaenjoyer/UI-LIBRARIES/refs/heads/main/idk_what_this_is/extensions/drawing.lua"))();
+local tween = loadstring(game:HttpGet("https://raw.githubusercontent.com/dementiaenjoyer/UI-LIBRARIES/refs/heads/main/idk_what_this_is/extensions/tween.lua"))() -- shhhh
+local signal = loadstring(game:HttpGet('https://raw.githubusercontent.com/dementiaenjoyer/UI-LIBRARIES/refs/heads/main/idk_what_this_is/extensions/signal.lua'))()
 
 -- library
 if not isfolder(settings.folder_name) then
