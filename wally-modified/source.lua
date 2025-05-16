@@ -174,7 +174,7 @@ local defaults; do
             return c
         end
         
-        function types:Toggle(name, callback, options)
+        function types:Toggle(name, options, callback)
             local default  = options.default or false;
             local location = options.location or self.flags;
             local flag     = options.flag or "";
@@ -1002,7 +1002,7 @@ local defaults; do
                     BackgroundTransparency = 1;
                     Active = false;
                 });
-                Parent = game:GetService("CoreGui");
+                Parent = gethui();
             }):FindFirstChild('Container');
         end
         if (not library.options) then
