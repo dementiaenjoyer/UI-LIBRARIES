@@ -1046,8 +1046,8 @@ local defaults; do
         end
     end
 
-    game:GetService("UserInputService").InputBegan:connect(function(input)
-        if (not library.binding) then
+    game:GetService("UserInputService").InputBegan:connect(function(input,gpe)
+        if (not library.binding) and (not gpe) then
             for idx, binds in next, library.binds do
                 local real_binding = binds.location[idx];
                 if real_binding and isreallypressed(real_binding, input) then
