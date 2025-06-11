@@ -12,7 +12,7 @@ end;
 
 local RunService = game:GetService("RunService")
 -- settings (so u dont have to scroll)
-local settings = {
+getgenv().settings = {
     folder_name = "anis private cracked";
     default_accent = Color3.fromRGB(255, 145, 240);
     drag_easying_style = "Quad";
