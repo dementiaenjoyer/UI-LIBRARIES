@@ -13,9 +13,6 @@ local Plex = {
     }
 }
 
-writefile("Plex.json", game:GetService("HttpService"):JSONEncode(Plex));
-local PlexFace = Font.new(getcustomasset("Plex.json"), Enum.FontWeight.Regular);
-
 local cloneref = cloneref or function(...) return ...; end;
 local gethui = gethui or function() return cloneref(game:GetService("CoreGui")); end
 
@@ -31,9 +28,13 @@ local TextService = GetService.TextService;
 local Teams = GetService.Teams;
 local Players = GetService.Players;
 local RunService = GetService.RunService;
+local HttpService = GetService.HttpService;
 local TweenService = GetService.TweenService;
 local RenderStepped = RunService.RenderStepped;
 local ContentProvider = GetService.ContentProvider;
+
+writefile("Plex.json", HttpService:JSONEncode(Plex));
+local PlexFace = Font.new(getcustomasset("Plex.json"), Enum.FontWeight.Regular);
 
 -- ContentProvider
 do
