@@ -31,22 +31,38 @@ local RunService = GetService.RunService;
 local HttpService = GetService.HttpService;
 local TweenService = GetService.TweenService;
 local RenderStepped = RunService.RenderStepped;
-local ContentProvider = GetService.ContentProvider;
 
 writefile("Plex.json", HttpService:JSONEncode(Plex));
-local PlexFace = Font.new(getcustomasset("Plex.json"), Enum.FontWeight.Regular);
 
-local Mouse = setmetatable({}, {
-    __index = function(self, key)
-        local mouse_location = InputService:GetMouseLocation();
+-- Assets
+do
+    local function GetAssetContent()
+        local Assets = { };
 
-        if (key == "X") then
-            return mouse_location.X;
-        elseif (key == "Y") then
-            return mouse_location.Y - 58;
+        for _, Asset in HttpService:JSONDecode(game:HttpGet("https://api.github.com/repos/dementiaenjoyer/UI-LIBRARIES/contents/ud_linoria/assets") or { }) do
+            Assets[string.split(Asset.name, ".")[1]] = base64decode(HttpService:JSONDecode(game:HttpGet(Asset.url)).content);
         end
 
-        return mouse_location;
+        return Assets;
+    end
+
+    for Name, Asset in GetAssetContent() do
+        writefile(`{Name}.png`, Asset);
+    end
+end
+
+local PlexFace = Font.new(getcustomasset("Plex.json"), Enum.FontWeight.Regular);
+local Mouse = setmetatable({}, {
+    __index = function(self, key)
+        local MouseLocation = InputService:GetMouseLocation();
+
+        if (key == "X") then
+            return MouseLocation.X;
+        elseif (key == "Y") then
+            return MouseLocation.Y - 58;
+        end
+
+        return MouseLocation;
     end
 });
 
@@ -483,7 +499,7 @@ do
             BorderSizePixel = 0;
             Size = UDim2.new(0, 27, 0, 13);
             ZIndex = 5;
-            Image = 'http://www.roblox.com/asset/?id=12977615774';
+            Image = getcustomasset("Transparency Checker.png");
             Visible = not not Info.Transparency;
             Parent = DisplayFrame;
         });
@@ -546,7 +562,7 @@ do
             BorderSizePixel = 0;
             Size = UDim2.new(1, 0, 1, 0);
             ZIndex = 18;
-            Image = 'rbxassetid://4155801252';
+            Image = getcustomasset("Saturation Colormap.png");
             Parent = SatVibMapInner;
         });
 
@@ -554,7 +570,7 @@ do
             AnchorPoint = Vector2.new(0.5, 0.5);
             Size = UDim2.new(0, 6, 0, 6);
             BackgroundTransparency = 1;
-            Image = 'http://www.roblox.com/asset/?id=9619665977';
+            Image = getcustomasset("Colorpicker Cursor.png");
             ImageColor3 = Color3.new(0, 0, 0);
             ZIndex = 19;
             Parent = SatVibMap;
@@ -564,7 +580,7 @@ do
             Size = UDim2.new(0, CursorOuter.Size.X.Offset - 2, 0, CursorOuter.Size.Y.Offset - 2);
             Position = UDim2.new(0, 1, 0, 1);
             BackgroundTransparency = 1;
-            Image = 'http://www.roblox.com/asset/?id=9619665977';
+            Image = getcustomasset("Colorpicker Cursor.png");
             ZIndex = 20;
             Parent = CursorOuter;
         })
@@ -675,7 +691,7 @@ do
             Library:Create('ImageLabel', {
                 BackgroundTransparency = 1;
                 Size = UDim2.new(1, 0, 1, 0);
-                Image = 'http://www.roblox.com/asset/?id=12978095818';
+                Image = getcustomasset("Transparency Checker 2.png");
                 ZIndex = 20;
                 Parent = TransparencyBoxInner;
             });
@@ -2274,7 +2290,7 @@ do
             BackgroundTransparency = 1;
             Position = UDim2.new(1, -16, 0.5, 0);
             Size = UDim2.new(0, 12, 0, 12);
-            Image = 'http://www.roblox.com/asset/?id=6282522798';
+            Image = getcustomasset("Dropdown.png");
             ZIndex = 8;
             Parent = DropdownInner;
         });
