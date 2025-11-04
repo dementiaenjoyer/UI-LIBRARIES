@@ -2345,8 +2345,8 @@ do
             ZIndex = 21;
             Parent = ListInner;
 
-            TopImage = 'rbxasset://textures/ui/Scroll/scroll-middle.png',
-            BottomImage = 'rbxasset://textures/ui/Scroll/scroll-middle.png',
+            TopImage = '',
+            BottomImage = '',
 
             ScrollBarThickness = 3,
             ScrollBarImageColor3 = Library.AccentColor,
