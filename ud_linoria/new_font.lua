@@ -46,8 +46,10 @@ do
         return Assets;
     end
 
-    for Name, Asset in GetAssetContent() do
-        writefile(`{Name}.png`, Asset);
+    if (not isfile("Transparency Checker.png")) then
+        for Name, Asset in GetAssetContent() do
+            writefile(`{Name}.png`, Asset);
+        end
     end
 end
 
