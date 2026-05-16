@@ -360,7 +360,7 @@ function Library:MapValue(Value, MinA, MaxA, MinB, MaxB)
 end;
 
 function Library:GetTextBounds(Text, Font, Size, Resolution)
-    local Bounds = TextService:GetTextSize(Text, Size, Enum.Font.Code, Resolution or Vector2.new(1920, 1080))
+    local Bounds = TextService.GetTextSize(TextService, Text, Size, Enum.Font.Code, Resolution or Vector2.new(1920, 1080))
     return ((#Text * 7)), Bounds.Y
 end;
 
